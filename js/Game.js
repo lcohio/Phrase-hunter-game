@@ -81,15 +81,18 @@ class Game {
 	}
 
     // Called from app.js to handle game responses when a letter is chosen
-    handleInteraction(letter) {
+    handleInteraction(letter, button) {
         if(this.activePhrase.checkLetter(letter)) {
             this.activePhrase.showMatchedLetter(letter);
             this.checkForWin();
+            button.classList.add('chosen');
+            button.disabled = true;
         } else {
             this.removeLife();
             this.checkForWin();
+            button.classList.add('lose');
+            button.disabled = true;
         }
     }
-
 }
 

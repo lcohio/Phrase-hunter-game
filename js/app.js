@@ -29,13 +29,6 @@ const logPhrase = (phrase) => {
 */
 
 
-// Disables key once it is clicked once
-const markButton = letter => {		
-	letter.disabled = true;
-	letter.className += ` chosen`;
-}
-
-
 // Init new game when user clicks the Start game button
 let game;
 document.getElementById('btn__reset').addEventListener('click', () => {
@@ -43,11 +36,10 @@ document.getElementById('btn__reset').addEventListener('click', () => {
     game.startGame();
 });
 
-// Mark the key as clicked and pass it to handleInteraction() to check it
+// Pass clicked key to handleInteraction() to check it
 document.getElementById('qwerty').addEventListener('click', (e) => {
     if(e.target.tagName === 'BUTTON') {
-        markButton(e.target);
-        game.handleInteraction(e.target.textContent);
+        game.handleInteraction(e.target.textContent, e.target);
     }
 });
 
